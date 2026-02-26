@@ -22,27 +22,27 @@ STEP 7: Use cross tabulation method to quantitatively analyze the relationship b
 
 STEP 8: Use heatmap method of representation to show relationships between two variables, one plotted on each axis.
 
-## CODING AND OUTPUT
+# CODING AND OUTPUT
 
-Importing Libraries
+### Importing Libraries
 ```
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns
 ```
-Load Dataset
+### Load Dataset
 ```
 df=pd.read_csv("titanic_dataset.csv")
 ```
-Analyze Outliers
+### Analyze Outliers
 ```
 sns.boxplot(x=df['Fare'])
 ```
 
 <img width="520" height="432" alt="image" src="https://github.com/user-attachments/assets/df613699-6f93-4872-89f0-9f40b69c3220" />
 
-Data Cleaning
+### Data Cleaning
 ```
 df.dropna(inplace=True)
 q1 = df['Fare'].quantile(0.25)
@@ -52,7 +52,7 @@ lower = q1 - 1.5 * IQR
 upper = q3 + 1.5 * IQR
 df=df[(df['Fare'] >= lower) & (df['Fare'] <= upper)]
 ```
-Count Plot
+### Count Plot
 ```
 sns.countplot(data=df,x='Survived')
 plt.title('Survival Distribution')
@@ -60,7 +60,7 @@ plt.title('Survival Distribution')
 
 <img width="563" height="453" alt="image" src="https://github.com/user-attachments/assets/6d13d269-af84-41ab-9b3f-9c0c89abaa04" />
 
-Distribution Plot
+### Distribution Plot
 ```
 sns.histplot(df['Fare'])
 plt.show()
@@ -68,14 +68,14 @@ plt.show()
 
 <img width="563" height="432" alt="image" src="https://github.com/user-attachments/assets/432d884a-7fb9-46d1-8d29-f509cb7118a1" />
 
-Cross Tabulation
+### Cross Tabulation
 ```
 pd.crosstab(df['Survived'],df['Pclass'])
 ```
 
 <img width="145" height="151" alt="image" src="https://github.com/user-attachments/assets/b98ec6b2-6927-4737-b319-c3c6011a2656" />
 
-Heatmap
+### Heatmap
 ```
 sns.heatmap(df.corr())
 ```
